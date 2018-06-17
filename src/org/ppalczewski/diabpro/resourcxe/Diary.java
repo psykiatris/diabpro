@@ -12,4 +12,5 @@ public class Diary {
     private JLabel diaryLabel;
     private JTextPane textPane1;
     private DatePicker diaryDatePick;
+    private JButton saveButton;
 }
