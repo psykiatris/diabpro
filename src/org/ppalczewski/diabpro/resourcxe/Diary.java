@@ -4,9 +4,12 @@
 
 package org.ppalczewski.diabpro.resourcxe;
 
+import com.michaelbaranov.microba.calendar.DatePicker;
+
 import javax.swing.*;
 
 public class Diary {
     private JLabel diaryLabel;
     private JTextPane textPane1;
+    private DatePicker diaryDatePick;
 }
