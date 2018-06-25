@@ -4,5 +4,14 @@
 
 package org.ppalczewski.diabpro.resource;
 
+import com.michaelbaranov.microba.calendar.DatePicker;
+
+import javax.swing.*;
+
 public class DPMain {
+    private JPanel panel1;
+    private DatePicker datePick;
+    private JLabel LabelEntry;
+    private JEditorPane editorPane1;
+    private JList listNutrition;
 }
