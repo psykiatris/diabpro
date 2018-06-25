@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="org.ppalczewski.diabpro.resource.DiaryPanel">
+  <grid id="27dc6" binding="diaryPanel" layout-manager="FlowLayout" hgap="2" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <minimumSize width="250" height="250"/>
+      <preferredSize width="250" height="200"/>
+    </properties>
+    <border type="none" title="Diary Entry:"/>
+    <children>
+      <component id="1a9f9" class="javax.swing.JEditorPane" binding="editorDiary">
+        <constraints/>
+        <properties>
+          <minimumSize width="200" height="200"/>
+          <preferredSize width="200" height="200"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
