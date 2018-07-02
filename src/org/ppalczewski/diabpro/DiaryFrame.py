@@ -2,12 +2,15 @@
 """
 Running window through Jython.
 Currently, issues with finding packages...
-May have to create empty __init__.py files to work.
+It seems Jython already has a folder named resource, so it doesn't like
+my resource folder
 """
+# Unoirt created Java package
+import org.ppalczewski.diabpro.resource as rs
+
 import javax.swing as swing
 import java.awt as awt
 import java.lang as lang
-import org.ppalczewski.diabpro.resource as rs
 
 
 def exit(event):
@@ -15,15 +18,21 @@ def exit(event):
 
 
 class DiaryFrame(swing.JFrame):
-    title = "Diabetes pro - 0.99"
+    panel1 = rs.DiaryPanel
 
-    def __init__(self, title, size=(500, 500)):
+    def __init__(self, title="Diabetes Pro - 0.99", size=(500, 500)):
         swing.JFrame.__init__(self, title, size=size, windowClosing=exit)
         self.contentPane.layout = awt.FlowLayout()
-        self.contentPane.add(rs.DiaryPanel)
-        self.contentPane.add(rs.datePanel)
-        self.contentPane.add(rs.statPanel)
+        # Success in creating frame.
+        # Fails when attempting to add panels I've created.
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
-    DiaryFrame()
+    DiaryFrame().show()
