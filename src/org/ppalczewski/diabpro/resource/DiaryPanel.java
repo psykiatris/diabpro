@@ -4,7 +4,8 @@
 
 package org.ppalczewski.diabpro.resource;
 
-import javax.swing.*;
+import javax.swing.JEditorPane;
+import javax.swing.JPanel;
 
 public class DiaryPanel {
     private JEditorPane editorDiary;
