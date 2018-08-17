@@ -4,6 +4,8 @@
 
 package org.ppalczewski.diabpro.core;
 
+import org.ppalczewski.diabpro.access.ConnectDatabase;
+
 public class Main {
 
     public static void main(String[] args) {
