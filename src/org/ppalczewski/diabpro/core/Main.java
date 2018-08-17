@@ -10,7 +10,7 @@ public class Main {
         System.out.println("Runs Diabetes Pro.");
         System.out.println("Connecting to database");
         ConnectDatabase.doConnect();
-        ConnectDatabase.close();
+        System.out.println("Is database open? " + ConnectDatabase.isOpen());
 
     }
 }

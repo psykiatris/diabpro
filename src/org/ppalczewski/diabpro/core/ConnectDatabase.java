@@ -66,6 +66,21 @@ public class ConnectDatabase {
         // ...
     }
 
+    // I put this in if I need a way
+    // to check if database is open or not.
+    // Will remove if unnecessary
+    public static boolean isOpen() {
+        boolean ans;
+
+        if(con == null)
+            ans = false;
+        else
+            ans = true;
+
+        return ans;
+
+    }
+
 
 } // End class
 
