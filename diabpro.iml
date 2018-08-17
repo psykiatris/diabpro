@@ -14,5 +14,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Python 2.7 (venv-idea) interpreter library" level="application" />
     <orderEntry type="library" name="microba-0.4.4" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.45" level="project" />
   </component>
 </module>

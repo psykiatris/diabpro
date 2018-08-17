@@ -5,8 +5,12 @@
 package org.ppalczewski.diabpro.core;
 
 public class Main {
+
     public static void main(String[] args) {
         System.out.println("Runs Diabetes Pro.");
+        System.out.println("Connecting to database");
+        ConnectDatabase.doConnect();
+        ConnectDatabase.close();
 
     }
 }
