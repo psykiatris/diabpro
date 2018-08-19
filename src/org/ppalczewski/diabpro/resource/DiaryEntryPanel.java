@@ -4,13 +4,10 @@
 
 package org.ppalczewski.diabpro.resource;
 
-import com.michaelbaranov.microba.calendar.DatePicker;
-
 import javax.swing.*;
 
-public class MainPanel {
-    private JPanel main;
+public class DiaryEntryPanel {
+    private JPanel diaryEntryPanel;
     private JEditorPane editorPane1;
-    private DatePicker datepick;
-    private JList statslist;
+    private JButton saveDataButton;
 }
