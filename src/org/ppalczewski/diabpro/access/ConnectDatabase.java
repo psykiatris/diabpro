@@ -46,7 +46,7 @@ public class ConnectDatabase {
     }
 
     // Make sure database connection closed
-    public static void close() {
+    public static void doClose() {
         if(con != null) {
             try {
                 con.close();
