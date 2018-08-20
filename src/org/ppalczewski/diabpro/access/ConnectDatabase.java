@@ -81,6 +81,10 @@ public class ConnectDatabase {
 
     }
 
+    public String toString() {
+        return "This class manaages connecting " + "to database.";
+    }
+
 
 } // End class
 

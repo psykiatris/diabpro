@@ -27,5 +27,11 @@ public class DatabaseFunctions {
     // When done
     // TODO: 8/19/18 Move doCloase function here, if can't call it.
 
+    // Description of class.
+    public String toString() {
+        return "This class will manage " +
+                "functions related to " +
+                "the database.";
+    }
 
-}
+} // end class
