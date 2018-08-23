@@ -3,36 +3,31 @@
  */
 
 package org.ppalczewski.diabpro.access;
-
 /*
-This file will connect the diary to the databse. Going to use mySQL.
-
-The date will be the key for each entry.
-Fields will be:
-* Glucose readings
-* Nutrition stats
-* Diary notes
+Once connected to database, these functions will allow creation of
+initial database, editing fields in database.
  */
-// Imports
-import com.sun.xml.internal.bind.v2.TODO;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectDatabase {
+public class DBFuncs {
 
-    // Set up connection
-    // TODO: 8/17/18 Set up way to get user info
+    // TODO: 8/23/18 Set up guest user for mySQL. 
 
-    // using established test database for now
-    // Change to the diabetespro database when done
+    // Set up final fields for connection
+    // Change user and pw info to your own system.
     private static final String url = "jdbc:mysql://localhost:3306/test" +
             "?verifyServerCertificate=false&useSSL=true";
-    private static final String user = "root";
-    private static final String pw = "Pe99er@1";
-    public static Connection con;
+    // See README on setting this up in mySQL, so that code can be 
+    // worked on.
+    private static final String user = "diabpro"; 
+    private static final String pw = "diabpro"; 
+    private static Connection con;
 
+    // Connect
     public static void doConnect() {
         if(con != null) return;
 
@@ -45,7 +40,23 @@ public class ConnectDatabase {
         }
     }
 
-    // Make sure database connection closed
+
+    public void crateDDB() {
+        // Check if database is open
+        if(!DBFuncs.isOpen())
+            return;
+        // Set up new database.
+        // TODO: 8/19/18 Create mySQL db
+
+    }
+
+    public void editDB() {
+        // Make changes to db
+        // TODO: 8/19/18 - Edit db
+    }
+    // When done
+    // TODO: 8/19/18 Move doCloase function here, if can't call it.
+
     public static void doClose() {
         if(con != null) {
             try {
@@ -56,15 +67,7 @@ public class ConnectDatabase {
             }
         }
 
-    } // End close()
-
-    public static void createDatabase() {
-        // ...
-    }
-
-    public static void editDatabase() {
-        // ...
-    }
+    } // End doClose()
 
     // I put this in if I need a way
     // to check if database is open or not.
@@ -72,10 +75,11 @@ public class ConnectDatabase {
     public static boolean isOpen() {
         boolean ans;
 
-        if(con == null)
+        if(con == null) {
             ans = false;
-        else
+        } else {
             ans = true;
+        }
 
         return ans;
 
@@ -85,6 +89,4 @@ public class ConnectDatabase {
         return "This class manaages connecting " + "to database.";
     }
 
-
-} // End class
-
+} // end class

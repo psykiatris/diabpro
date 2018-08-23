@@ -1,3 +1,13 @@
 8/19/18 - Been working on this for a while. Floundering around is more like
  it. Anyway, I put code in to use a mySQL database. For any contributors,
  you need to have version 5.
+
+ 8/22/18 - Upgraded code to JDK9, which mains can use JRE9 or JRE10 to run.
+  Reason why is that there are quite a few changed to JDK9, some features
+  are deprecated.
+
+  8/23/18 - Changed login info for the database. On distribution, the
+  program will ask user for credential info and save it internally. Log
+  into mysql as root user. Then type the follwoing:
+  GRANT ALL PRIVILEGES ON *.* TO 'diabpro'@'localhost' IDEBTUFUED BT ''
+  duabori';

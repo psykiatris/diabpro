@@ -4,15 +4,17 @@
 
 package org.ppalczewski.diabpro.core;
 
-import org.ppalczewski.diabpro.access.ConnectDatabase;
+import org.ppalczewski.diabpro.access.DBFuncs;
+
+import static java.lang.System.out;
 
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Runs Diabetes Pro.");
-        System.out.println("Connecting to database");
-        ConnectDatabase.doConnect();
-        System.out.println("Is database open? " + ConnectDatabase.isOpen());
+        out.println("Runs Diabetes Pro.");
+        out.println("Connecting to database");
+        DBFuncs.doConnect();
+        out.println("Is database open? " + DBFuncs.isOpen());
 
     }
 }
