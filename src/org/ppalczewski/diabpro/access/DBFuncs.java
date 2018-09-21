@@ -15,17 +15,21 @@ import java.sql.SQLException;
 
 public class DBFuncs {
 
-    // TODO: 8/23/18 Set up guest user for mySQL. 
+
 
     // Set up final fields for connection
     // Change user and pw info to your own system.
     private static final String url = "jdbc:mysql://localhost:3306/test" +
             "?verifyServerCertificate=false&useSSL=true";
-    // See README on setting this up in mySQL, so that code can be 
+    private static final String DIABPRO = "diabpro";
+    // See README on setting this up in mySQL, so that code can be
     // worked on.
-    private static final String user = "diabpro"; 
-    private static final String pw = "diabpro"; 
+    private static final String user = DIABPRO;
+    private static final String pw = DIABPRO;
     private static Connection con;
+
+    public DBFuncs() {
+    }
 
     // Connect
     public static void doConnect() {
@@ -33,6 +37,10 @@ public class DBFuncs {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            /*
+            Per inspection, DriverManager has been superseded by javax
+            .sql.Datasoure. (Need to update)
+             */
             con = DriverManager.getConnection(url, user, pw);
             System.out.println("Connected");
         } catch (Exception e) {
@@ -41,7 +49,7 @@ public class DBFuncs {
     }
 
 
-    public void crateDDB() {
+    public void createDDB() {
         // Check if database is open
         if(!DBFuncs.isOpen())
             return;
