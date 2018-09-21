@@ -19,8 +19,9 @@ public class DBFuncs {
 
     // Set up final fields for connection
     // Change user and pw info to your own system.
-    private static final String url = "jdbc:mysql://localhost:3306/test" +
-            "?verifyServerCertificate=false&useSSL=true";
+
+    private static final String url =
+            "jdbc:mysql://localhost:3306/test?verifyServerCertificate=false&useSSL=true";
     private static final String DIABPRO = "diabpro";
     // See README on setting this up in mySQL, so that code can be
     // worked on.
@@ -43,22 +44,26 @@ public class DBFuncs {
              */
             con = DriverManager.getConnection(url, user, pw);
             System.out.println("Connected");
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class Not Found.");
+        } catch (SQLException e) {
+            System.out.println("Error connecting to database.");
         }
     }
 
 
-    public void createDDB() {
+    public static void createDB() {
         // Check if database is open
-        if(!DBFuncs.isOpen())
-            return;
+        if(!DBFuncs.isOpen()) {
+            // ..
+        }
+
         // Set up new database.
         // TODO: 8/19/18 Create mySQL db
 
     }
 
-    public void editDB() {
+    public static void editDB() {
         // Make changes to db
         // TODO: 8/19/18 - Edit db
     }
@@ -71,11 +76,11 @@ public class DBFuncs {
                 con.close();
                 System.out.println("Closed connection");
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("Error in closing database.");
             }
         }
 
-    } // End doClose()
+    }
 
     // I put this in if I need a way
     // to check if database is open or not.
@@ -83,18 +88,14 @@ public class DBFuncs {
     public static boolean isOpen() {
         boolean ans;
 
-        if(con == null) {
-            ans = false;
-        } else {
-            ans = true;
-        }
+        ans = con != null;
 
         return ans;
 
     }
 
-    public String toString() {
-        return "This class manaages connecting " + "to database.";
+    public final String toString() {
+        return "This class manaages connecting to database.";
     }
 
-} // end class
+}

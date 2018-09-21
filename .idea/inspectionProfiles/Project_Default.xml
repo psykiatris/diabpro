@@ -625,8 +625,8 @@
     <inspection_tool class="CallToSuspiciousStringMethod" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="Production" level="WARNING" enabled="true" />
     </inspection_tool>
-    <inspection_tool class="CanBeFinal" enabled="true" level="WARNING" enabled_by_default="true">
-      <scope name="Production" level="WARNING" enabled="true">
+    <inspection_tool class="CanBeFinal" enabled="false" level="WARNING" enabled_by_default="false">
+      <scope name="Production" level="WARNING" enabled="false">
         <option name="REPORT_CLASSES" value="false" />
         <option name="REPORT_METHODS" value="false" />
         <option name="REPORT_FIELDS" value="true" />
@@ -1381,8 +1381,8 @@
     <inspection_tool class="FinalClass" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="Production" level="WARNING" enabled="true" />
     </inspection_tool>
-    <inspection_tool class="FinalMethod" enabled="true" level="WARNING" enabled_by_default="true">
-      <scope name="Production" level="WARNING" enabled="true" />
+    <inspection_tool class="FinalMethod" enabled="false" level="WARNING" enabled_by_default="false">
+      <scope name="Production" level="WARNING" enabled="false" />
     </inspection_tool>
     <inspection_tool class="FinalMethodInFinalClass" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="Production" level="WARNING" enabled="true" />
@@ -2030,8 +2030,8 @@
     <inspection_tool class="LoadLibraryWithNonConstantString" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="Production" level="WARNING" enabled="true" />
     </inspection_tool>
-    <inspection_tool class="LocalCanBeFinal" enabled="true" level="WARNING" enabled_by_default="true">
-      <scope name="Production" level="WARNING" enabled="true">
+    <inspection_tool class="LocalCanBeFinal" enabled="false" level="WARNING" enabled_by_default="false">
+      <scope name="Production" level="WARNING" enabled="false">
         <option name="REPORT_VARIABLES" value="true" />
         <option name="REPORT_PARAMETERS" value="true" />
       </scope>
@@ -3760,8 +3760,8 @@
     <inspection_tool class="SystemGetenv" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="Production" level="WARNING" enabled="true" />
     </inspection_tool>
-    <inspection_tool class="SystemOutErr" enabled="true" level="WARNING" enabled_by_default="true">
-      <scope name="Production" level="WARNING" enabled="true" />
+    <inspection_tool class="SystemOutErr" enabled="false" level="WARNING" enabled_by_default="false">
+      <scope name="Production" level="WARNING" enabled="false" />
     </inspection_tool>
     <inspection_tool class="SystemProperties" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="Production" level="WARNING" enabled="true" />
