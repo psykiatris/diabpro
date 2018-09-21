@@ -4,8 +4,17 @@
 
 package org.ppalczewski.diabpro.resource;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import java.text.MessageFormat;
 
 public class DatePickPanel {
     private JPanel panel1;
+
+    public DatePickPanel() {
+    }
+
+    @Override
+    public final String toString() {
+        return MessageFormat.format("DatePickPanel'{'panel1={0}'}'", panel1);
+    }
 }

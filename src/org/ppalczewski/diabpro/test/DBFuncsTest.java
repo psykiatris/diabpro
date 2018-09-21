@@ -6,12 +6,15 @@ package org.ppalczewski.diabpro.test;
 
 class DBFuncsTest {
 
+    DBFuncsTest() {
+    }
+
     @org.junit.jupiter.api.Test
     void doConnect() {
     }
 
     @org.junit.jupiter.api.Test
-    void crateDDB() {
+    void createDB() {
     }
 
     @org.junit.jupiter.api.Test
