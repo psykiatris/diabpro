@@ -2,9 +2,9 @@
  * Copyright (c) 2018. Author: Patrick Palczewski <psykiatris@gmail.com>. Licensed under GPL 3. See LICENSE for details.
  */
 
-package org.ppalczewski.diabpro.core;
+package org.palczewski.diabpro.core;
 
-import org.ppalczewski.diabpro.access.DBFuncs;
+import org.palczewski.diabpro.access.DBFuncs;
 
 import static java.lang.System.out;
 

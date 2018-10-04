@@ -2,7 +2,7 @@
  * Copyright (c) 2018. Author: Patrick Palczewski <psykiatris@gmail.com>. Licensed under GPL 3. See LICENSE for details.
  */
 
-package org.ppalczewski.diabpro.access;
+package org.palczewski.diabpro.access;
 /*
 Once connected to database, these functions will allow creation of
 initial database, editing fields in database.
