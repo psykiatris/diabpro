@@ -8,7 +8,7 @@ Mechanism to load/save diary info.
  */
 public class DiaryLoadSave {
     
-    void loadDiary{} {
+    void loadDiary() {} {
         // TODO: 10/3/18 Set up mechanism to load diary in the GUI. 
     }
     
