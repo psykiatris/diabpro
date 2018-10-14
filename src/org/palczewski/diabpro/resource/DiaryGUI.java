@@ -18,15 +18,24 @@ public class DiaryGUI extends Frame {
     private JPanel diaryEntryPan;
 
     public DiaryGUI() {
-        setLayout(new FlowLayout());
+        setLayout(new GridBagLayout());
 
+        // Initialized components
         diaryEntryPan = new JPanel();
         lDiaryEntry = new JLabel("Diary Entry:");
+        /* dateStye options is:
+        * 1 - Month spelled out (i.e. January 1, 2018)
+        * 2 - Month abbreviated (i.e. Jan 1, 2018)
+        * 3 - Numeric (i.e. 1/1/2018
+        * */
         diaryDatePicker = new DatePicker(new Date(), 2);
-        add(diaryEntryPan);
 
-        diaryEntryPan.add(lDiaryEntry);
-        diaryEntryPan.add(diaryDatePicker);
+        //Add to panel
+        diaryEntryPan.add(lDiaryEntry, BorderLayout.NORTH);
+        diaryEntryPan.add(diaryDatePicker, BorderLayout.NORTH);
+
+        // Add Panel to Frame
+        add(diaryEntryPan);
 
         addWindowListener(new WindowAdapter() {
             @Override
