@@ -4,17 +4,23 @@
 
 package org.palczewski.diabpro.core;
 
-import org.palczewski.diabpro.access.DBFuncs;
+import org.palczewski.diabpro.resource.DiaryGUI;
+
+import java.awt.*;
 
 import static java.lang.System.out;
 
 public class Main {
 
     public static void main(String[] args) {
-        out.println("Runs Diabetes Pro.");
-        out.println("Connecting to database");
-        DBFuncs.doConnect();
-        out.println("Is database open? " + DBFuncs.isOpen());
+        out.println("Database connects OK.");
+
+
+        DiaryGUI appwin = new DiaryGUI();
+
+        appwin.setSize(new Dimension(600, 600));
+        appwin.setTitle("Diabetes Pro v0.1");
+        appwin.setVisible(true);
 
 
     }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="org.palczewski.diabpro.resource.DiaryGUI">
+  <grid id="27dc6" binding="diaryEntryPan" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <hspacer id="d6255">
+        <constraints/>
+      </hspacer>
+      <vspacer id="de4a4">
+        <constraints/>
+      </vspacer>
+      <component id="7b4e8" class="javax.swing.JLabel" binding="lDiaryEntry">
+        <constraints/>
+        <properties>
+          <text value="Diary Entry:"/>
+        </properties>
+      </component>
+      <component id="6ae3c" class="com.michaelbaranov.microba.calendar.DatePicker" binding="diaryDatePicker">
+        <constraints/>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>
