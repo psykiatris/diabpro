@@ -6,8 +6,6 @@ package org.palczewski.diabpro.core;
 
 import org.palczewski.diabpro.access.DBFuncs;
 
-import java.awt.*;
-
 import static java.lang.System.out;
 
 public class Main {
@@ -18,11 +16,6 @@ public class Main {
         DBFuncs.doConnect();
         out.println("Is database open? " + DBFuncs.isOpen());
 
-        DiaryWindow appwin = new DiaryWindow();
-
-        appwin.setSize(new Dimension(600, 600));
-        appwin.setTitle("Diabetes Pro 0.1");
-        appwin.setVisible(true);
 
     }
 }
