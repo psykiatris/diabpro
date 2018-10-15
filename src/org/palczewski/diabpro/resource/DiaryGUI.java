@@ -5,6 +5,7 @@
 package org.palczewski.diabpro.resource;
 
 import com.michaelbaranov.microba.calendar.DatePicker;
+import com.michaelbaranov.microba.calendar.ui.basic.BasicDatePickerUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,7 @@ import java.text.DateFormat;
  * IntelliJ adds its own package tot he JAR file when it builds the
  * classes, so works with java from command-line. The form is as-is.*/
 
-public class DiaryGUI extends JFrame implements InputMethodListener {
+public class DiaryGUI extends JFrame {
     JEditorPane editorDiary;
     JTree treeStats;
     JButton btnSave;
@@ -31,15 +32,21 @@ public class DiaryGUI extends JFrame implements InputMethodListener {
         // Set DatePicker
         cmpDatePicker.setKeepTime(true);
         cmpDatePicker.setFieldEditable(true);
+        BasicDatePickerUI dPicker =
+                (BasicDatePickerUI) cmpDatePicker.getUI();
 
-        // Add to Frame
-        add(pnlDiaryEntry);
+                // Add to Frame
+                        add(pnlDiaryEntry);
 
         // Listener for DatePicker
-        cmpDatePicker.addInputMethodListener(this);
+        cmpDatePicker.getComponent(0).addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
 
-
-
+                DateFormat df = cmpDatePicker.getDateFormat();
+                editorDiary.setText("This should be good: " + df.format(cmpDatePicker.getDate()));
+            }
+        });
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -47,22 +54,6 @@ public class DiaryGUI extends JFrame implements InputMethodListener {
                 System.exit(0);
             }
         });
-    }
-
-
-
-    //    Process events for DatePicker object
-    public void inputMethodTextChanged(InputMethodEvent ime) {
-
-        // commit field
-        cmpDatePicker.commitEdit();
-        DateFormat df = cmpDatePicker.getDateFormat();
-        String d = df.format(cmpDatePicker.getDate());
-        editorDiary.setText("This is the date of all dates: " + d);
-        repaint();
-    }
-    public void caretPositionChanged(InputMethodEvent ime) {
-
     }
 
     {
@@ -110,4 +101,8 @@ public class DiaryGUI extends JFrame implements InputMethodListener {
     public JComponent $$$getRootComponent$$$() {
         return pnlDiaryEntry;
     }
+
+
+    //    Process events for DatePicker object
+
 }
