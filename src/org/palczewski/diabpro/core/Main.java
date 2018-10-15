@@ -15,12 +15,14 @@ public class Main {
     public static void main(String[] args) {
         out.println("Database connects OK.");
 
-
+        // Run GUI form
         DiaryGUI appwin = new DiaryGUI();
 
         appwin.setSize(new Dimension(600, 600));
         appwin.setTitle("Diabetes Pro v0.1");
         appwin.setVisible(true);
+
+
 
 
     }
