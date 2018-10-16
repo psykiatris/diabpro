@@ -10,7 +10,7 @@
     <children>
       <component id="9029b" class="com.michaelbaranov.microba.calendar.DatePicker" binding="cmpDatePicker">
         <constraints>
-          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>

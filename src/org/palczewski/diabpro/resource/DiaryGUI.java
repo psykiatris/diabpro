@@ -18,7 +18,7 @@ import java.text.DateFormat;
  * IntelliJ adds its own package tot he JAR file when it builds the
  * classes, so works with java from command-line. The form is as-is.*/
 
-public class DiaryGUI extends JFrame {
+public class DiaryGUI extends Frame {
     JEditorPane editorDiary;
     JTree treeStats;
     JButton btnSave;
@@ -29,9 +29,10 @@ public class DiaryGUI extends JFrame {
     String msg = "";
 
     public DiaryGUI() {
+
         // Set DatePicker
-        cmpDatePicker.setKeepTime(true);
-        cmpDatePicker.setFieldEditable(true);
+
+
 
 
         // Add to Frame
@@ -43,9 +44,9 @@ public class DiaryGUI extends JFrame {
          * textbox changes.
          * */
         // Listener for DatePicker
-        cmpDatePicker.getComponent(0).addMouseListener(new MouseAdapter() {
+        editorDiary.addFocusListener(new FocusAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void focusGained(FocusEvent e) {
                 cmpDatePicker.commitEdit();
                 DateFormat df = cmpDatePicker.getDateFormat();
                 editorDiary.setText("This should be good: " + df.format(cmpDatePicker.getDate()));
@@ -82,7 +83,7 @@ public class DiaryGUI extends JFrame {
         pnlDiaryEntry.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 3, new Insets(2, 5, 10, 5), 5, 10));
         pnlDiaryEntry.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(), null));
         cmpDatePicker = new DatePicker();
-        pnlDiaryEntry.add(cmpDatePicker, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        pnlDiaryEntry.add(cmpDatePicker, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_NORTHEAST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         final com.intellij.uiDesigner.core.Spacer spacer1 = new com.intellij.uiDesigner.core.Spacer();
         pnlDiaryEntry.add(spacer1, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         final com.intellij.uiDesigner.core.Spacer spacer2 = new com.intellij.uiDesigner.core.Spacer();
@@ -108,7 +109,7 @@ public class DiaryGUI extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return pnlDiaryEntry;
     }
-    // Process events here.
+    // Process any events here:
 
 
 }
