@@ -5,11 +5,13 @@
 package org.palczewski.diabpro.resource;
 
 import com.michaelbaranov.microba.calendar.DatePicker;
-import com.michaelbaranov.microba.calendar.ui.basic.BasicDatePickerUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.DateFormat;
 /*
 * This form uses IntrelliJs formatting, so it was very easy to call. Did
@@ -109,7 +111,7 @@ public class DiaryGUI extends Frame {
     public JComponent $$$getRootComponent$$$() {
         return pnlDiaryEntry;
     }
-    // Process any events here:
+
 
 
 }
