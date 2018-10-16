@@ -32,28 +32,35 @@ public class DiaryGUI extends JFrame {
         // Set DatePicker
         cmpDatePicker.setKeepTime(true);
         cmpDatePicker.setFieldEditable(true);
-        BasicDatePickerUI dPicker =
-                (BasicDatePickerUI) cmpDatePicker.getUI();
 
-                // Add to Frame
-                        add(pnlDiaryEntry);
 
+        // Add to Frame
+        add(pnlDiaryEntry);
+        /*
+         * Got DatePicker event working, but needed to call getComponent.
+         * Index 0 is the textbfield, 1 is the calendar.
+         * Works with MouseEvent but not InputmehodEvent (which monitors
+         * textbox changes.
+         * */
         // Listener for DatePicker
         cmpDatePicker.getComponent(0).addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseReleased(MouseEvent e) {
-
+            public void mouseClicked(MouseEvent e) {
+                cmpDatePicker.commitEdit();
                 DateFormat df = cmpDatePicker.getDateFormat();
                 editorDiary.setText("This should be good: " + df.format(cmpDatePicker.getDate()));
             }
         });
 
+
+        // Window Listener for frame
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }
         });
+
     }
 
     {
@@ -101,8 +108,7 @@ public class DiaryGUI extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return pnlDiaryEntry;
     }
+    // Process events here.
 
-
-    //    Process events for DatePicker object
 
 }
