@@ -14,11 +14,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.DateFormat;
 /*
-* This form uses IntrelliJs formatting, so it was very easy to call. Did
- * not need to add the components to th epanel, then the panel to the
- * frame.
- * IntelliJ adds its own package tot he JAR file when it builds the
- * classes, so works with java from command-line. The form is as-is.*/
+* This form uses IntrelliJs uiDesigner, so it was very easy to call.
+* Automatically, added components to  panel, then I could add panel to
+* Frame.
+ * IntelliJ yses forms_rt.jar when it when it builds the
+ * classes, so works with java from command-line. The form is as-is as I
+  * need to use the designer to make changes. */
 
 public class DiaryGUI extends Frame {
     JEditorPane editorDiary;
@@ -31,10 +32,7 @@ public class DiaryGUI extends Frame {
     String msg = "";
 
     public DiaryGUI() {
-
-        // Set DatePicker
-
-
+        // TODO: 10/16/18 Create menu bar to put on Frame.
         // Add to Frame
         add(pnlDiaryEntry);
 
@@ -42,9 +40,9 @@ public class DiaryGUI extends Frame {
         editorDiary.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                cmpDatePicker.commitEdit();
+
                 DateFormat df = cmpDatePicker.getDateFormat();
-                editorDiary.setText("This should be good: " + df.format(cmpDatePicker.getDate()));
+                editorDiary.setText("param: " + ", " + df.format(cmpDatePicker.getDate()));
             }
         });
         // Add mouse listener to button
