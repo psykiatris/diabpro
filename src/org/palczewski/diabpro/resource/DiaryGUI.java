@@ -64,9 +64,16 @@ public class DiaryGUI extends Frame {
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }
+            public void windowOpened(WindowEvent e) {
+                DateFormat df = cmpDatePicker.getDateFormat();
+                tfDate.setText(df.format(cmpDatePicker.getDate()));
+            }
+
         });
 
+
     }
+
 
 
     {
