@@ -33,6 +33,7 @@ public class DiaryGUI extends Frame {
     JLabel lblStats;
     JPanel pnlDiaryEntry;
     DatePicker cmpDatePicker;
+    private JTextField tfDate;
     String msg = "";
 
     public DiaryGUI() {
@@ -42,8 +43,9 @@ public class DiaryGUI extends Frame {
 
         // Listener for the editor
         cmpDatePicker.addActionListener(e -> {
-                DateFormat df = cmpDatePicker.getDateFormat();
-                editorDiary.setText(MessageFormat.format("Date chosen: {0}", df.format(cmpDatePicker.getDate())));
+            DateFormat df = cmpDatePicker.getDateFormat();
+            tfDate.setText(df.format(cmpDatePicker.getDate()));
+            editorDiary.setText(MessageFormat.format("Date chosen: {0}", df.format(cmpDatePicker.getDate())));
 
         });
 
@@ -83,27 +85,30 @@ public class DiaryGUI extends Frame {
      */
     private void $$$setupUI$$$() {
         pnlDiaryEntry = new JPanel();
-        pnlDiaryEntry.setLayout(new GridLayoutManager(4, 3, new Insets(2, 5, 10, 5), 5, 10));
+        pnlDiaryEntry.setLayout(new GridLayoutManager(4, 5, new Insets(2, 5, 10, 5), 5, 10));
         pnlDiaryEntry.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(), null));
         cmpDatePicker = new DatePicker();
-        pnlDiaryEntry.add(cmpDatePicker, new GridConstraints(0, 2, 1, 1, GridConstraints.ANCHOR_NORTHEAST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        pnlDiaryEntry.add(cmpDatePicker, new GridConstraints(0, 4, 1, 1, GridConstraints.ANCHOR_NORTHEAST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         final Spacer spacer1 = new Spacer();
-        pnlDiaryEntry.add(spacer1, new GridConstraints(0, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
+        pnlDiaryEntry.add(spacer1, new GridConstraints(0, 0, 1, 4, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         final Spacer spacer2 = new Spacer();
-        pnlDiaryEntry.add(spacer2, new GridConstraints(1, 1, 2, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
+        pnlDiaryEntry.add(spacer2, new GridConstraints(1, 3, 2, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         lblDiaryEntry = new JLabel();
         lblDiaryEntry.setText("Diary Entry:");
         pnlDiaryEntry.add(lblDiaryEntry, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         editorDiary = new JEditorPane();
-        pnlDiaryEntry.add(editorDiary, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        pnlDiaryEntry.add(editorDiary, new GridConstraints(2, 0, 1, 3, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         lblStats = new JLabel();
         lblStats.setText("Statistics:");
-        pnlDiaryEntry.add(lblStats, new GridConstraints(1, 2, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        pnlDiaryEntry.add(lblStats, new GridConstraints(1, 4, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         treeStats = new JTree();
-        pnlDiaryEntry.add(treeStats, new GridConstraints(2, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        pnlDiaryEntry.add(treeStats, new GridConstraints(2, 4, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         btnSave = new JButton();
         btnSave.setText("Save");
-        pnlDiaryEntry.add(btnSave, new GridConstraints(3, 2, 1, 1, GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        pnlDiaryEntry.add(btnSave, new GridConstraints(3, 4, 1, 1, GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        tfDate = new JTextField();
+        tfDate.setEditable(false);
+        pnlDiaryEntry.add(tfDate, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_NORTHEAST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
     }
 
     /**
