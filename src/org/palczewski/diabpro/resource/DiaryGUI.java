@@ -16,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.DateFormat;
+import java.text.MessageFormat;
 /*
 * This form uses IntrelliJs uiDesigner, so it was very easy to call.
 * Automatically, added components to  panel, then I could add panel to
@@ -42,18 +43,10 @@ public class DiaryGUI extends Frame {
         // Listener for the editor
         cmpDatePicker.addActionListener(e -> {
                 DateFormat df = cmpDatePicker.getDateFormat();
-                editorDiary.setText("Date chosen: " + df.format(cmpDatePicker.getDate()));
+                editorDiary.setText(MessageFormat.format("Date chosen: {0}", df.format(cmpDatePicker.getDate())));
 
         });
-        /*
-        * editorDiary.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
 
-                DateFormat df = cmpDatePicker.getDateFormat();
-                editorDiary.setText("param: " + ", " + df.format(cmpDatePicker.getDate()));
-            }
-        });*/
         // Add mouse listener to button
         btnSave.addMouseListener(new MouseAdapter() {
             @Override

@@ -2369,8 +2369,8 @@
     <inspection_tool class="NestedConditionalExpression" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="Production" level="WARNING" enabled="true" />
     </inspection_tool>
-    <inspection_tool class="NestedMethodCall" enabled="true" level="WARNING" enabled_by_default="true">
-      <scope name="Production" level="WARNING" enabled="true">
+    <inspection_tool class="NestedMethodCall" enabled="false" level="WARNING" enabled_by_default="false">
+      <scope name="Production" level="WARNING" enabled="false">
         <option name="m_ignoreFieldInitializations" value="true" />
       </scope>
       <option name="m_ignoreFieldInitializations" value="true" />
