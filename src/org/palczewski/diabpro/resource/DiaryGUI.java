@@ -11,7 +11,10 @@ import com.michaelbaranov.microba.calendar.DatePicker;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.DateFormat;
 /*
 * This form uses IntrelliJs uiDesigner, so it was very easy to call.
@@ -37,14 +40,20 @@ public class DiaryGUI extends Frame {
         add(pnlDiaryEntry);
 
         // Listener for the editor
-        editorDiary.addFocusListener(new FocusAdapter() {
+        cmpDatePicker.addActionListener(e -> {
+                DateFormat df = cmpDatePicker.getDateFormat();
+                editorDiary.setText("Date chosen: " + df.format(cmpDatePicker.getDate()));
+
+        });
+        /*
+        * editorDiary.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
 
                 DateFormat df = cmpDatePicker.getDateFormat();
                 editorDiary.setText("param: " + ", " + df.format(cmpDatePicker.getDate()));
             }
-        });
+        });*/
         // Add mouse listener to button
         btnSave.addMouseListener(new MouseAdapter() {
             @Override
