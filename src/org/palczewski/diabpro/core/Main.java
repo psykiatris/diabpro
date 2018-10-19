@@ -18,7 +18,7 @@ public class Main {
         // Run GUI form
         DiaryGUI appwin = new DiaryGUI();
 
-        appwin.setSize(new Dimension(600, 600));
+        appwin.setSize(new Dimension(595, 320));
         appwin.setTitle("Diabetes Pro v0.1");
         appwin.setVisible(true);
 
