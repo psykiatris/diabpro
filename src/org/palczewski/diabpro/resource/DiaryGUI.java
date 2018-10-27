@@ -20,6 +20,7 @@ import java.text.MessageFormat;
 
 public class DiaryGUI extends Frame {
     JEditorPane editorDiary;
+    JTextArea editorArea;
     JTree treeStats;
     JButton btnSave;
     JLabel lblDiaryEntry;
@@ -32,6 +33,7 @@ public class DiaryGUI extends Frame {
     public DiaryGUI() {
         // TODO: 10/16/18 Create menu bar to put on Frame.
         setLayout(new FlowLayout());
+
 
         // Setting up components for the panel.
         // Uainf GridBagLayout
@@ -48,14 +50,16 @@ public class DiaryGUI extends Frame {
         lblDiaryEntry = new JLabel("Diary Entry: ");
         tfDate = new JTextField(8);
         lblStats = new JLabel("Statistics:");
-        editorDiary = new JEditorPane();
-        editorDiary.setSize(300, 300);
+        editorArea = new JTextArea(20, 30);
+        editorArea.setLineWrap(true);
+        editorArea.setTabSize(4);
+        editorArea.setAutoscrolls(true);
         treeStats = new JTree();
         btnSave = new JButton("Save");
         pnlDiaryEntry.setSize(new Dimension(5900, 320));
 
         // This pads the cell
-        gbc.insets = new Insets(0, 10, 0, 10);
+        gbc.insets = new Insets(0, 2, 0, 2);
 
         gbc.gridx = 580;
         gbc.gridwidth = 10;
@@ -85,7 +89,7 @@ public class DiaryGUI extends Frame {
         gbc.gridwidth = 300;
         gbc.gridheight = 300;
         gbc.fill = GridBagConstraints.BOTH;
-        pnlDiaryEntry.add(editorDiary, gbc);
+        pnlDiaryEntry.add(editorArea, gbc);
 
         gbc.gridx = 320;
         pnlDiaryEntry.add(treeStats, gbc);
@@ -106,7 +110,8 @@ public class DiaryGUI extends Frame {
         cmpDatePicker.addActionListener(e -> {
             DateFormat df = cmpDatePicker.getDateFormat();
             tfDate.setText(df.format(cmpDatePicker.getDate()));
-            editorDiary.setText(MessageFormat.format("Date chosen: {0}", df.format(cmpDatePicker.getDate())));
+            editorArea.setText(MessageFormat.format("Date chosen: {0}",
+                    df.format(cmpDatePicker.getDate())));
 
         });
 
