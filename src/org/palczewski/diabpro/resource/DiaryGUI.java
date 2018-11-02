@@ -19,8 +19,8 @@ import java.text.MessageFormat;
 * Main window of the application.*/
 
 public class DiaryGUI extends Frame {
-    JEditorPane editorDiary;
-    JTextArea editorArea;
+
+    private final JTextArea editorArea;
     JTree treeStats;
     JButton btnSave;
     JLabel lblDiaryEntry;
@@ -39,9 +39,6 @@ public class DiaryGUI extends Frame {
         // Uainf GridBagLayout
         GridBagLayout gbag = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
-
-        // Window layout
-
 
         // Set up panel
         pnlDiaryEntry = new JPanel(gbag);
