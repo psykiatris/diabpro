@@ -32,6 +32,7 @@ public class DiaryGUI extends Frame {
 
     public DiaryGUI() {
         // TODO: 10/16/18 Create menu bar to put on Frame.
+        setLocationRelativeTo(null);
         setLayout(new FlowLayout());
 
 
