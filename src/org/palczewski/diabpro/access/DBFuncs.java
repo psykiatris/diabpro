@@ -52,10 +52,11 @@ public class DBFuncs {
     }
 
 
-    public static void createDB() {
-        // Check if database is open
-        if(!DBFuncs.isOpen()) {
-            // ..
+    public static void createDB(String db) {
+        // Check if connection is open
+        if(!isOpen()) {
+            System.out.println("Connection not open!");
+            System.exit(11);
         }
 
         // Set up new database.
