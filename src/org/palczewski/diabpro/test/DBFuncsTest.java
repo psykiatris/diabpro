@@ -4,17 +4,26 @@
 
 package org.palczewski.diabpro.test;
 
+import org.palczewski.diabpro.access.DBFuncs;
+
+import java.sql.Connection;
+
 class DBFuncsTest {
+    DBFuncs db;
 
     DBFuncsTest() {
+        db = new DBFuncs();
     }
 
     @org.junit.jupiter.api.Test
     void doConnect() {
+
+        db.doConnect();
     }
 
     @org.junit.jupiter.api.Test
-    void createDB() {
+    void createDB(Connection c, String dbName) {
+        db.createDB(c, dbName);
     }
 
     @org.junit.jupiter.api.Test
