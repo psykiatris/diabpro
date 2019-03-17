@@ -50,22 +50,23 @@ public class DBFuncs {
         } catch (SQLException e) {
             System.out.println("Error connecting to database.");
         }
-        // pass to createDB
-        createDB(con, "diabetes");
+
+
     }
 
 
-    public static void createDB(Connection conn, String db) {
+    public static void createDB(String db) {
         // Check if connection is open
         if(!isOpen()) {
             // If not open, open it.
             doConnect();
         }
+        // TODO: 3/15/19 Check if db exists. If yes, return, if not, go ahead and create.
 
         // Set up new database.
         System.out.println("Creating database " + db + ".");
         try {
-            stmt = conn.createStatement();
+            stmt = con.createStatement();
             String sql = "create database " + db;
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
@@ -73,6 +74,18 @@ public class DBFuncs {
         }
         System.out.println("Database " + db + " ready for input.");
 
+
+    }
+
+    public void listDb() {
+        try {
+            stmt = con.createStatement();
+            String list = "show databases";
+            System.out.println(stmt.getFetchDirection());
+
+        } catch (SQLException e) {
+            System.out.println("Error processing statement" + e.getMessage());
+        }
 
     }
 

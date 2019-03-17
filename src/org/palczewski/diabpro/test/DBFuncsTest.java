@@ -6,8 +6,6 @@ package org.palczewski.diabpro.test;
 
 import org.palczewski.diabpro.access.DBFuncs;
 
-import java.sql.Connection;
-
 class DBFuncsTest {
     DBFuncs db;
 
@@ -22,12 +20,14 @@ class DBFuncsTest {
     }
 
     @org.junit.jupiter.api.Test
-    void createDB(Connection c, String dbName) {
-        db.createDB(c, dbName);
+    void createDB(String dbName) {
+        db.createDB(dbName);
     }
 
     @org.junit.jupiter.api.Test
     void editDB() {
+        db.doConnect();
+        db.listDb();
     }
 
     @org.junit.jupiter.api.Test
