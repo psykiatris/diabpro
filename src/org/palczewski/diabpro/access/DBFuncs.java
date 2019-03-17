@@ -26,6 +26,7 @@ public class DBFuncs {
     private static Statement stmt = null;
 
     public DBFuncs() {
+        // Creates instance
     }
 
     // Connect
@@ -75,16 +76,24 @@ public class DBFuncs {
     }
 
     public void listDb() {
+        // Check if con is open or not.
+        if(!isOpen()) {
+            // If not, connect.
+            doConnect();
+        }
+
         try {
             stmt = con.createStatement();
             String list = "show databases";
-            ResultSet rs = stmt.executeQuery(list);
-            System.out.println("List of databases on mySQL:");
-            int i = 1;
-            while(rs.next()) {
-                System.out.println(i  + ": " + rs.getString(1));
-                i++;
+            try (ResultSet rs = stmt.executeQuery(list)) {
+                System.out.println("List of databases on mySQL:");
+                int i = 1;
+                while (rs.next()) {
+                    System.out.println(i + ": " + rs.getString(1));
+                    i++;
+                }
             }
+            con.close();
 
         } catch (SQLException e) {
             System.out.println("Error processing statement" + e.getMessage());
