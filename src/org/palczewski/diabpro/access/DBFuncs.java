@@ -9,10 +9,7 @@ initial database, editing fields in database.
  */
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DBFuncs {
     // Set up final fields for connection
@@ -81,7 +78,13 @@ public class DBFuncs {
         try {
             stmt = con.createStatement();
             String list = "show databases";
-            System.out.println(stmt.getFetchDirection());
+            ResultSet rs = stmt.executeQuery(list);
+            System.out.println("List of databases on mySQL:");
+            int i = 1;
+            while(rs.next()) {
+                System.out.println(i  + ": " + rs.getString(1));
+                i++;
+            }
 
         } catch (SQLException e) {
             System.out.println("Error processing statement" + e.getMessage());
