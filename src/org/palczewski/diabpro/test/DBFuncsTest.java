@@ -20,8 +20,8 @@ class DBFuncsTest {
     }
 
     @org.junit.jupiter.api.Test
-    void createDB(String dbName) {
-        db.createDB(dbName);
+    void createDB() {
+        db.createDB("diabetes");
     }
 
     @org.junit.jupiter.api.Test

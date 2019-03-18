@@ -41,7 +41,7 @@ public class DBFuncs {
             .sql.Datasoure. (Need to update)
              */
             con = DriverManager.getConnection(url, user, pw);
-            System.out.println("Connected");
+            System.out.println("Connected to server.");
 
         } catch (ClassNotFoundException e) {
             System.out.println("Class Not Found.");
