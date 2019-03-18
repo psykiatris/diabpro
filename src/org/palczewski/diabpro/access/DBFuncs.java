@@ -16,7 +16,10 @@ public class DBFuncs {
     // Change user and pw info to your own system.
 
     private static final String url =
-            "jdbc:mysql://localhost:3306/?verifyServerCertificate=false&useSSL=true";
+            "jdbc:mysql://localhost:3306/diabetes" +
+                    "?verifyServerCertificate" +
+                    "=false" +
+                    "&useSSL=true";
     private static final String DIABPRO = "diabpro";
     // See README on setting this up in mySQL, so that code can be
     // worked on.
@@ -75,7 +78,7 @@ public class DBFuncs {
 
     }
 
-    public void listDb() {
+    public void listDB() {
         // Check if con is open or not.
         if(!isOpen()) {
             // If not, connect.
@@ -98,6 +101,33 @@ public class DBFuncs {
         } catch (SQLException e) {
             System.out.println("Error processing statement" + e.getMessage());
         }
+
+    }
+
+    public void listTables() {
+        // If not connected, connect.
+        if(!isOpen()) {
+            doConnect();
+        }
+
+        /*
+        Change to the database prior to running this method. Will list
+        the table(s) within the db.
+         */
+
+    }
+
+    public void changeD(String dbName) {
+        // After connect, change to specifi db.
+        if(!isOpen()) {
+            doConnect();
+        }
+
+        /*
+        Switch to database in dbName.
+         */
+
+
 
     }
 

@@ -26,7 +26,7 @@ class DBFuncsTest {
 
     @org.junit.jupiter.api.Test
     void listDB() {
-        db.listDb();
+        db.listDB();
     }
 
     @org.junit.jupiter.api.Test
