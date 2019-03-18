@@ -25,8 +25,13 @@ class DBFuncsTest {
     }
 
     @org.junit.jupiter.api.Test
-    void editDB() {
+    void listDB() {
         db.listDb();
+    }
+
+    @org.junit.jupiter.api.Test
+    void editDB() {
+
     }
 
     @org.junit.jupiter.api.Test
