@@ -32,6 +32,7 @@ class DBFuncsTest {
 
     @org.junit.jupiter.api.Test
     void editDB() {
+        db.editDB();
 
     }
 

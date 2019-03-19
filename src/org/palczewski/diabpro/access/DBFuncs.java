@@ -110,7 +110,7 @@ public class DBFuncs {
             doConnect();
         }
 
-        // Change to database
+        // Make sure it changes to database
         changeDB("diabetes");
         // Create table with random number
         try {
@@ -198,9 +198,29 @@ public class DBFuncs {
 
     }
 
-    public static void editDB() {
+    public void editDB() {
         // Make changes to db
         // TODO: 8/19/18 - Edit db
+        // Check if open
+        if(!isOpen()) {
+            doConnect();
+        }
+
+        // Read ffom table
+        changeDB("test");
+        try {
+            stmt = con.createStatement();
+            String query = "select * from Employees";
+            stmt.executeQuery(query);
+            ResultSet rs = stmt.getResultSet();
+            System.out.println("ID\tFirst Name:");
+            while((rs != null) && (rs.next())) {
+                System.out.println(rs.getInt(1) + "\t" + rs.getString(3));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error in editDB(): " + e.getMessage());
+        }
+
     }
     // When done
     // TODO: 8/19/18 Move doCloase function here, if can't call it.
