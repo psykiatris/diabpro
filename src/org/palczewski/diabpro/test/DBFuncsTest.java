@@ -4,6 +4,7 @@
 
 package org.palczewski.diabpro.test;
 
+import org.junit.jupiter.api.Test;
 import org.palczewski.diabpro.access.DBFuncs;
 
 class DBFuncsTest {
@@ -41,4 +42,28 @@ class DBFuncsTest {
     @org.junit.jupiter.api.Test
     void isOpen() {
     }
+
+    @Test
+    void createTables() {
+        db.createTables("diabetes");
+        db.listTables();
+    }
+
+    @Test
+    void deleteDB() {
+    }
+
+    @Test
+    void listTables() {
+        db.listTables();
+    }
+
+    @Test
+    void changeDB() {
+        db.changeDB("test");
+        db.listTables();
+
+    }
+
+
 }

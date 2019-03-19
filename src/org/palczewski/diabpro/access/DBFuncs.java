@@ -25,8 +25,8 @@ public class DBFuncs {
     // worked on.
     private static final String user = DIABPRO;
     private static final String pw = DIABPRO;
-    private static Connection con = null;
-    private static Statement stmt = null;
+    private static Connection con;
+    private static Statement stmt;
 
     public DBFuncs() {
         // Creates instance
@@ -104,6 +104,51 @@ public class DBFuncs {
 
     }
 
+    public void createTables(String dbName) {
+        // Check if connected
+        if(!isOpen()) {
+            doConnect();
+        }
+
+        // Change to database
+        changeDB("diabetes");
+        // Create table
+        try {
+            stmt = con.createStatement();
+            String table =
+                    "nutrition" + (int) (Math.random() * 1000.0);
+            String createTable = "create table " + table + "(id integer, " +
+                    "name Text(32))";
+            stmt.execute(createTable);
+
+            /*
+            Temporary code
+             */
+            // Enter stuff
+            for(int i = 0; i < 255; i++) {
+                String addRow =
+                        "insert into " + table + " values(" + (int)(Math.random() * 32767) + ",'Text Value" + Math.random() + "')";
+                stmt.execute(addRow);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error processing statement" + e.getMessage());
+        }
+
+
+
+
+
+    }
+
+    public void deleteDB() {
+        /*
+        Unsure if this will really be needed, but put it in just in case.
+        Will delete specified db.
+         */
+    }
+
+
+
     public void listTables() {
         // If not connected, connect.
         if(!isOpen()) {
@@ -114,10 +159,25 @@ public class DBFuncs {
         Change to the database prior to running this method. Will list
         the table(s) within the db.
          */
+        try {
+            stmt = con.createStatement();
+            try(ResultSet rs = stmt.executeQuery("show tables")) {
+                int i = 1;
+                System.out.println("Table list:");
+                while(rs.next()) {
+                    System.out.println(i + ": " + rs.getString(1));
+                    i++;
+                }
+            } catch (SQLException e) {
+                System.out.println("Error executing query: " + e.getMessage());
+            }
+        } catch (SQLException e) {
+            System.out.println("Error processing listTable(): " + e.getMessage());
+        }
 
     }
 
-    public void changeD(String dbName) {
+    public void changeDB(String dbName) {
         // After connect, change to specifi db.
         if(!isOpen()) {
             doConnect();
@@ -126,7 +186,13 @@ public class DBFuncs {
         /*
         Switch to database in dbName.
          */
-
+        try {
+            stmt = con.createStatement();
+            stmt.executeUpdate("use " + dbName);
+            System.out.println("Changed to " + dbName + " database.");
+        } catch (SQLException e) {
+            System.out.println("Error changing db: " + e.getMessage());
+        }
 
 
     }
