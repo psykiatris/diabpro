@@ -112,7 +112,7 @@ public class DBFuncs {
 
         // Change to database
         changeDB("diabetes");
-        // Create table
+        // Create table with random number
         try {
             stmt = con.createStatement();
             String table =
@@ -123,6 +123,7 @@ public class DBFuncs {
 
             /*
             Temporary code
+            Demonstrates how to input info into a table thru Java code.
              */
             // Enter stuff
             for(int i = 0; i < 255; i++) {
@@ -131,7 +132,7 @@ public class DBFuncs {
                 stmt.execute(addRow);
             }
         } catch (SQLException e) {
-            System.out.println("Error processing statement" + e.getMessage());
+            System.out.println("Error in createTables(): " + e.getMessage());
         }
 
 
