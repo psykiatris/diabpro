@@ -8,12 +8,10 @@ import org.palczewski.diabpro.resource.DiaryGUI;
 
 import java.awt.*;
 
-import static java.lang.System.out;
-
 public class Main {
 
     public static void main(String[] args) {
-        out.println("Database connects OK.");
+        System.out.println("Database connects OK.");
 
         // Run GUI form
         DiaryGUI appwin = new DiaryGUI();
