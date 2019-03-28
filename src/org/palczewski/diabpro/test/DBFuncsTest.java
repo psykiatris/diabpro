@@ -17,12 +17,12 @@ class DBFuncsTest {
     @org.junit.jupiter.api.Test
     void doConnect() {
 
-        db.doConnect();
+        DBFuncs.doConnect();
     }
 
     @org.junit.jupiter.api.Test
     void createDB() {
-        db.createDB("diabetes");
+        DBFuncs.createDB("test_one");
     }
 
     @org.junit.jupiter.api.Test
