@@ -16,9 +16,9 @@ This will be a general class to allow creatiion of users in mySQL.
 This class will connect as root to the mySQL program, and create the
 user with appropriate permissions, then load the duabetes database.
  */
-public class UserServlet extends HttpServlet {
+public class CreateUserServlet extends HttpServlet {
 
-    public void createUser(HttpServletRequest req,
+    public void doPost(HttpServletRequest req,
                            HttpServletResponse res) throws ServletException, IOException {
 
         // Get username and password
@@ -28,6 +28,10 @@ public class UserServlet extends HttpServlet {
         // connect to mySQL
         // TODO: 3/28/19 Change connection code to be able to log in as anyone to mySQL. 
         DBFuncs.doConnect();
+    }
+
+    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        doPost(req, res);
     }
 
 }
