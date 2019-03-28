@@ -21,6 +21,13 @@ public class UserServlet extends HttpServlet {
     public void createUser(HttpServletRequest req,
                            HttpServletResponse res) throws ServletException, IOException {
 
+        // Get username and password
+        String userN = req.getParameter("username");
+        String userP = req.getParameter("password");
+
+        // connect to mySQL
+        // TODO: 3/28/19 Change connection code to be able to log in as anyone to mySQL. 
+        DBFuncs.doConnect();
     }
 
 }
