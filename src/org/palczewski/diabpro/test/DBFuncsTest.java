@@ -68,7 +68,7 @@ class DBFuncsTest {
 
     @Test
     void changeDB() {
-        db.changeDB("test");
+        db.changeDB("diabetes");
         db.listTables();
 
     }

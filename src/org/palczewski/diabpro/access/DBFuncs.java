@@ -36,7 +36,7 @@ public class DBFuncs {
     // Connect
     public static void doConnect() {
         // If already connected...
-        if(con != null) return;
+        if(isOpen()) return;
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -212,9 +212,13 @@ public class DBFuncs {
                         "Candidates successfully.");
                 sno++;
             }
+            stmt.close();
+            con.close();
+
         } catch (SQLException e) {
             System.out.println("Eror processing SQL statment: " + e.getMessage());
         }
+
 
 
     }
