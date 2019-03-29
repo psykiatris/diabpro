@@ -37,6 +37,13 @@ class DBFuncsTest {
     }
 
     @org.junit.jupiter.api.Test
+    void insertRecord() {
+        db.changeDB("diabetes");
+        db.insertRecord();
+    }
+
+
+    @org.junit.jupiter.api.Test
     void doClose() {
     }
 
@@ -46,7 +53,7 @@ class DBFuncsTest {
 
     @Test
     void createTables() {
-        db.createTables("diabetes");
+        db.createTables("diabetes", "test_table");
         db.listTables();
     }
 

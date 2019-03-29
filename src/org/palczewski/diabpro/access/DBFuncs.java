@@ -10,6 +10,7 @@ initial database, editing fields in database.
 
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class DBFuncs {
     // Set up final fields for connection
@@ -104,7 +105,7 @@ public class DBFuncs {
 
     }
 
-    public void createTables(String dbName) {
+    public void createTables(String dbName, String table) {
         // Check if connected
         if(!isOpen()) {
             doConnect();
@@ -115,30 +116,17 @@ public class DBFuncs {
         // Create table with random number
         try {
             stmt = con.createStatement();
-            String table =
-                    "nutrition" + (int) (Math.random() * 1000.0);
-            String createTable = "create table " + table + "(id integer, " +
-                    "name Text(32))";
-            stmt.execute(createTable);
+            String createTable = "create table " + table + " (S_No int, " +
+                    "Name Text(20))";
 
-            /*
-            Temporary code
-            Demonstrates how to input info into a table thru Java code.
-             */
-            // Enter stuff
-            for(int i = 0; i < 255; i++) {
-                String addRow =
-                        "insert into " + table + " values(" + (int)(Math.random() * 32767) + ",'Text Value" + Math.random() + "')";
-                stmt.execute(addRow);
-            }
+
+            stmt.execute(createTable);
+            System.out.println(table + " ready for input");
+
+
         } catch (SQLException e) {
             System.out.println("Error in createTables(): " + e.getMessage());
         }
-
-
-
-
-
     }
 
     public void deleteDB() {
@@ -193,6 +181,39 @@ public class DBFuncs {
             System.out.println("Changed to " + dbName + " database.");
         } catch (SQLException e) {
             System.out.println("Error changing db: " + e.getMessage());
+        }
+
+
+    }
+
+    public void insertRecord() {
+        // If not connected, connedt
+        if(!isOpen()) {
+            doConnect();
+        }
+
+        /*
+        Reads inputfrom user and puts into the table.
+         */
+
+
+        try(Scanner in = new Scanner(System.in)){
+            // Entry from keyboard
+            stmt = con.createStatement();
+            int sno = 1;
+            while(sno <= 10) {
+
+                System.out.print("Enter name: ");
+                String n = in.nextLine();
+                String qry = "insert into Candidates values " +
+                        "(" + sno + ", \"" + n.trim() + "\")";
+                int i = stmt.executeUpdate(qry);
+                System.out.println(i + " record is inserted into " +
+                        "Candidates successfully.");
+                sno++;
+            }
+        } catch (SQLException e) {
+            System.out.println("Eror processing SQL statment: " + e.getMessage());
         }
 
 

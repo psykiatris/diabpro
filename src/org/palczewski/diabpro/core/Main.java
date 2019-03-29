@@ -4,9 +4,7 @@
 
 package org.palczewski.diabpro.core;
 
-import org.palczewski.diabpro.resource.DiaryGUI;
-
-import java.awt.*;
+import org.palczewski.diabpro.access.DBFuncs;
 
 public class Main {
 
@@ -14,11 +12,20 @@ public class Main {
         System.out.println("Database connects OK.");
 
         // Run GUI form
+        /*
         DiaryGUI appwin = new DiaryGUI();
+
 
         appwin.setSize(new Dimension(595, 425));
         appwin.setTitle("Diabetes Pro v0.1");
         appwin.setVisible(true);
+        */
+
+        DBFuncs db = new DBFuncs();
+        db.changeDB("diabetes");
+        db.createTables("diabetes", "Candidates");
+        db.insertRecord();
+
 
 
 
