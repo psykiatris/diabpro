@@ -13,7 +13,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="microba-0.4.4" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-5.1.45" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit5.2">
         <CLASSES>
@@ -31,5 +30,7 @@
     <orderEntry type="library" name="junit-platform-commons-1.3.1" level="project" />
     <orderEntry type="library" name="opentest4j-1.1.1" level="project" />
     <orderEntry type="library" name="servlet-api" level="project" />
+    <orderEntry type="library" name="mysql-connector-java" level="project" />
+    <orderEntry type="library" name="dbutils-1.0" level="project" />
   </component>
 </module>

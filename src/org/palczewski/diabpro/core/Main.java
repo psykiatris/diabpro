@@ -4,7 +4,7 @@
 
 package org.palczewski.diabpro.core;
 
-import org.palczewski.diabpro.access.DBFuncs;
+import org.palczewski.connect.MainConnect;
 
 public class Main {
 
@@ -21,10 +21,18 @@ public class Main {
         appwin.setVisible(true);
         */
 
-        DBFuncs db = new DBFuncs();
-        db.changeDB("diabetes");
-        db.createTables("diabetes", "Candidates");
-        db.insertRecord();
+        // Attempt db connect
+        MainConnect mc = new MainConnect();
+        mc.doConnect("diabpro", "diabpro");
+
+        System.out.println();
+        System.out.println(mc);
+
+
+
+
+
+
 
 
 

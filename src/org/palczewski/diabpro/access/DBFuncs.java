@@ -111,8 +111,6 @@ public class DBFuncs {
             doConnect();
         }
 
-        // Make sure it changes to database
-        changeDB("diabetes");
         // Create table with random number
         try {
             stmt = con.createStatement();
