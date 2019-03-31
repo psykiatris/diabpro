@@ -25,8 +25,7 @@ public class Main {
         MainConnect mc = new MainConnect();
         mc.doConnect("diabpro", "diabpro");
 
-        System.out.println();
-        System.out.println(mc);
+        System.out.println("Is connection open?: " + mc.isOpen());
 
 
 
