@@ -28,9 +28,15 @@ public class Main {
 
         // Attempt db connect
         MainConnect mc = new MainConnect();
+        /*
+        Update this to take params from user. Use Scanner object to read
+         input.
+         */
         conn = mc.doConnect("diabpro", "diabpro");
+        // Pass connection
+        // to DatabaseMachine
         DatabaseMachine dm = new DatabaseMachine(conn);
-        dm.createDB("diabetes2");
+        dm.viewDatabase();
 
 
 
