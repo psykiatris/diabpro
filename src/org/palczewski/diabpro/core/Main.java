@@ -5,11 +5,16 @@
 package org.palczewski.diabpro.core;
 
 import org.palczewski.connect.MainConnect;
+import org.palczewski.edit.DatabaseMachine;
+
+import java.sql.Connection;
 
 public class Main {
 
+    static Connection conn;
+
     public static void main(String[] args) {
-        System.out.println("Database connects OK.");
+        System.out.println("Attempting to connect to mySQL");
 
         // Run GUI form
         /*
@@ -23,9 +28,11 @@ public class Main {
 
         // Attempt db connect
         MainConnect mc = new MainConnect();
-        mc.doConnect("diabpro", "diabpro");
+        conn = mc.doConnect("diabpro", "diabpro");
+        DatabaseMachine dm = new DatabaseMachine(conn);
+        dm.createDB("diabetes2");
 
-        System.out.println("Is connection open?: " + mc.isOpen());
+
 
 
 
