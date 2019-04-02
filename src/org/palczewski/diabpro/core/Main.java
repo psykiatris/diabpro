@@ -6,6 +6,7 @@ package org.palczewski.diabpro.core;
 
 import org.palczewski.connect.MainConnect;
 import org.palczewski.edit.DatabaseMachine;
+import org.palczewski.edit.TableMachine;
 
 import java.sql.Connection;
 
@@ -36,18 +37,9 @@ public class Main {
         // Pass connection
         // to DatabaseMachine
         DatabaseMachine dm = new DatabaseMachine(conn);
-        dm.viewDatabase();
-
-
-
-
-
-
-
-
-
-
-
+        System.out.println(dm);
+        TableMachine tm = new TableMachine(conn);
+        System.out.println(tm);
 
 
     }
