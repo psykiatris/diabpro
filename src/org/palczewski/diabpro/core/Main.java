@@ -9,12 +9,28 @@ import org.palczewski.edit.DatabaseMachine;
 import org.palczewski.edit.TableMachine;
 
 import java.sql.Connection;
+import java.util.Scanner;
 
 public class Main {
 
     static Connection conn;
+    static String user;
+    static String pw;
+    static String dbName;
 
     public static void main(String[] args) {
+        // TODO: 4/4/19 Password field is exposed. FIX FIX
+        //Get input
+        try(Scanner in = new Scanner(System.in)) {
+            System.out.println("Welcome to Diabetes Pro 1.0!");
+            System.out.print("Enter your username: ");
+            user = in.nextLine();
+            System.out.print("Enter your password: ");
+            pw = in.nextLine();
+            System.out.print("Enter database name: ");
+            dbName = in.nextLine();
+            System.out.println();
+        }
         System.out.println("Attempting to connect to mySQL");
 
         // Run GUI form
@@ -33,13 +49,15 @@ public class Main {
         Update this to take params from user. Use Scanner object to read
          input.
          */
-        conn = mc.doConnect("diabpro", "diabpro");
+        conn = mc.doConnect(user, pw, dbName);
         // Pass connection
         // to DatabaseMachine
         DatabaseMachine dm = new DatabaseMachine(conn);
-        System.out.println(dm);
         TableMachine tm = new TableMachine(conn);
-        System.out.println(tm);
+        dm.switchDatabase("diabetes");
+        System.out.println();
+        dm.switchDatabase("mysql");
+
 
 
     }
