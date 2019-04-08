@@ -5,9 +5,11 @@
 package org.palczewski.diabpro.core;
 
 import org.palczewski.connect.MainConnect;
+import org.palczewski.core.UserMachine;
 import org.palczewski.edit.DatabaseMachine;
 import org.palczewski.edit.TableMachine;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.util.Scanner;
 
@@ -21,7 +23,7 @@ public class Main {
     public static void main(String[] args) {
         // TODO: 4/4/19 Password field is exposed. FIX FIX
         //Get input
-        try(Scanner in = new Scanner(System.in)) {
+        try (Scanner in = new Scanner(System.in, StandardCharsets.UTF_8)) {
             System.out.println("Welcome to Diabetes Pro 1.0!");
             System.out.print("Enter your username: ");
             user = in.nextLine();
@@ -54,9 +56,12 @@ public class Main {
         // to DatabaseMachine
         DatabaseMachine dm = new DatabaseMachine(conn);
         TableMachine tm = new TableMachine(conn);
-        dm.switchDatabase("diabetes");
-        System.out.println();
-        dm.switchDatabase("mysql");
+        UserMachine um = new UserMachine(conn);
+
+        // Create a table
+        tm.createTable("history");
+
+
 
 
 
