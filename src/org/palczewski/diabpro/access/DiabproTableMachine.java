@@ -49,7 +49,7 @@ public class DiabproTableMachine extends TableMachine {
                 stmt = conn.createStatement();
                 // Create nutrition table
                 String table2 =
-                        MessageFormat.format("CREATE TABLE IF NOT EXISTS {0}_nutrition (user CHAR(20),date DATE, food CHAR(20), cal INT, carbs INT, sugar INT, CONSTRAINT FOREIGN KEY (user, date) REFERENCES {1}_diary (date, user_id))", user, user);
+                        MessageFormat.format("CREATE TABLE IF NOT EXISTS {0}_nutrition (date DATE, user_id CHAR(20), food CHAR(20), cal INT, carbs INT, sugar INT, CONSTRAINT FOREIGN KEY (date, user_id) REFERENCES {1}_diary (date, user_id))", user, user);
                 stmt.executeUpdate(table2);
                 stmt.close();
             } catch (SQLException e) {
