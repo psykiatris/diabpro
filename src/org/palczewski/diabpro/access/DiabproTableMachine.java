@@ -43,15 +43,13 @@ public class DiabproTableMachine extends TableMachine {
         if(conn != null) {
             try {
                 stmt = conn.createStatement();
-                String table1 = MessageFormat.format("CREATE TABLE IF NOT EXISTS {0}_diary (date DATE, user_id CHAR(20), entry MEDIUMTEXT, CONSTRAINT PRIMARY KEY (date, User_id))", user);
+                String table1 = MessageFormat.format("CREATE TABLE IF NOT EXISTS {0}_diary (date DATE, user_id CHAR(20), entry MEDIUMTEXT, CONSTRAINT PRIMARY KEY (date, user_id))", user);
                 stmt.executeUpdate(table1);
                 stmt.close();
                 stmt = conn.createStatement();
                 // Create nutrition table
                 String table2 =
-                        MessageFormat.format("CREATE TABLE " +
-                                "IF NOT EXISTS {0}_nutrition (user_id " +
-                                "CHAR(20),date DATE, food CHAR(20), cal INT, carbs INT, sugar INT, CONSTRAINT FOREIGN KEY (user_id, date) REFERENCES {1}_diary (user_id, date))", user, user);
+                        MessageFormat.format("CREATE TABLE IF NOT EXISTS {0}_nutrition (user CHAR(20),date DATE, food CHAR(20), cal INT, carbs INT, sugar INT, CONSTRAINT FOREIGN KEY (user, date) REFERENCES {1}_diary (date, user_id))", user, user);
                 stmt.executeUpdate(table2);
                 stmt.close();
             } catch (SQLException e) {
