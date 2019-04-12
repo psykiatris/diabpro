@@ -6,8 +6,8 @@ package org.palczewski.diabpro.core;
 
 import org.palczewski.connect.MainConnect;
 import org.palczewski.core.UserMachine;
+import org.palczewski.diabpro.access.DiabproTableMachine;
 import org.palczewski.edit.DatabaseMachine;
-import org.palczewski.edit.TableMachine;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
@@ -19,7 +19,7 @@ public class Main {
     static Connection conn;
     static String user;
     static String pw;
-    static String dbName;
+    static String dbName = "diabetes";
 
     public static void main(String[] args) {
         // TODO: 4/4/19 Password field is exposed. FIX FIX
@@ -33,12 +33,7 @@ public class Main {
             user = in.nextLine();
             System.out.print("Enter your password: ");
             pw = in.nextLine();
-            System.out.print("Enter database name: ");
-            dbName = in.nextLine();
             System.out.println();
-
-
-            System.out.println("Attempting to connect to mySQL");
 
             // Run GUI form
         /*
@@ -60,14 +55,17 @@ public class Main {
             // Pass connection
             // to DatabaseMachine
             DatabaseMachine dm = new DatabaseMachine(conn);
-            TableMachine tm = new TableMachine(conn);
+            DiabproTableMachine tm = new DiabproTableMachine(conn, user,
+                    dbName);
             UserMachine um = new UserMachine(conn);
 
             // Create a table
-            tm.createTable("history");
-            // Now try input
-            tm.insertRecord();
+            tm.createTable();
+            tm.viewTables();
 
+
+
+            in.close(); // Close scanner
         } catch (Exception e) {
             System.out.println(MessageFormat.format("Exception in main(): {0}", e.getMessage()));
         }
