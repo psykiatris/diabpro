@@ -22,7 +22,7 @@ public class RemoveUserServlet extends HttpServlet {
         String userN = req.getParameter("user");
 
         // connect to database
-        DBFuncs.doConnect();
+        // do later
 
         // Set up commands
     }

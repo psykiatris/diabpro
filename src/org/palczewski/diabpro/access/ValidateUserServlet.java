@@ -23,7 +23,7 @@ public class ValidateUserServlet extends HttpServlet {
         String pass = req.getParameter("pass");
 
         // Connect to mySQL
-        DBFuncs.doConnect();
+        // do later
 
         // Proecess validation
     }

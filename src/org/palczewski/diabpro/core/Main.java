@@ -16,10 +16,13 @@ import java.util.Scanner;
 
 public class Main {
 
+    static final String DIABPRO = "diabpro";
     static Connection conn;
     static String user;
     static String pw;
     static String dbName = "diabetes";
+    private final String rootUser = DIABPRO;
+    private final String rootPW = DIABPRO;
 
     public static void main(String[] args) {
         // TODO: 4/4/19 Password field is exposed. FIX FIX
@@ -29,6 +32,8 @@ public class Main {
 
 
             System.out.println("Welcome to Diabetes Pro 1.0!");
+            System.out.println();
+            System.out.println("Please log in");
             System.out.print("Enter your username: ");
             user = in.nextLine();
             System.out.print("Enter your password: ");
@@ -47,10 +52,7 @@ public class Main {
 
             // Attempt db connect
             MainConnect mc = new MainConnect();
-        /*
-        Update this to take params from user. Use Scanner object to read
-         input.
-         */
+
             conn = mc.doConnect(user, pw, dbName);
             // Pass connection
             // to DatabaseMachine

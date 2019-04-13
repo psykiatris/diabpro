@@ -27,7 +27,7 @@ public class CreateUserServlet extends HttpServlet {
 
         // connect to mySQL
         // TODO: 3/28/19 Change connection code to be able to log in as anyone to mySQL. 
-        DBFuncs.doConnect();
+        //Do later
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
