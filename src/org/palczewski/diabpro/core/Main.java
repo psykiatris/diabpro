@@ -27,13 +27,14 @@ public class Main {
     public static void main(String[] args) {
         // TODO: 4/4/19 Password field is exposed. FIX FIX
         //Get input
+        // TODO: 4/13/19 Move log in out of main into its own function.
         Scanner in = new Scanner(System.in, StandardCharsets.UTF_8);
         try {
 
 
-            System.out.println("Welcome to Diabetes Pro 1.0!");
+            System.out.println("\tWelcome to Diabetes Pro 1.0!\nThis system will allow you to input diary information along with stats on the things you eat.");
             System.out.println();
-            System.out.println("Please log in");
+            System.out.println("\tPlease log in");
             System.out.print("Enter your username: ");
             user = in.nextLine();
             System.out.print("Enter your password: ");
