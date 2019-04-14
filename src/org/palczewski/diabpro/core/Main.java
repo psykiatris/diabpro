@@ -63,8 +63,8 @@ public class Main {
             UserMachine um = new UserMachine(conn);
 
             // Create a table
-            tm.createTable();
-            tm.viewTables();
+            dm.switchDatabase("diabetes");
+            tm.getColumns("diabpro_nutrition");
 
 
 
