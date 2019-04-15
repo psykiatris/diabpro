@@ -11,6 +11,7 @@ import org.palczewski.edit.DatabaseMachine;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.util.Scanner;
 
@@ -55,22 +56,35 @@ public class Main {
             MainConnect mc = new MainConnect();
 
             conn = mc.doConnect(user, pw, dbName);
-            // Pass connection
-            // to DatabaseMachine
+            /*
+            The new connection is passed to the other classes.
+             */
             DatabaseMachine dm = new DatabaseMachine(conn);
             DiabproTableMachine tm = new DiabproTableMachine(conn, user,
                     dbName);
             UserMachine um = new UserMachine(conn);
 
             // Create a table
-            dm.switchDatabase("diabetes");
-            tm.getColumns("diabpro_nutrition");
+            dm.getNameVersion();
+            System.out.println();
+            dm.getDriverInfo();
+            System.out.println();
+            dm.getUserName();
 
 
 
             in.close(); // Close scanner
         } catch (Exception e) {
             System.out.println(MessageFormat.format("Exception in main(): {0}", e.getMessage()));
+        } finally {
+            // Close connection
+            try {
+                if(conn.isValid(120)) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error closing SQL connection: " + e.getNextException());
+            }
         }
 
     }

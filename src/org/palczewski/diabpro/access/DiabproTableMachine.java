@@ -15,7 +15,7 @@ import java.text.MessageFormat;
 
 /*
 This class extends dbutils.TableMachine, so that it may override the
-table creation and insetRecords methods
+table creation and insertRecords methods
  */
 public class DiabproTableMachine extends TableMachine {
 
