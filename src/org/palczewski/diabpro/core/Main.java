@@ -4,7 +4,7 @@
 
 package org.palczewski.diabpro.core;
 
-import org.palczewski.connect.MainConnect;
+import org.palczewski.connect.SQLConnect;
 import org.palczewski.core.UserMachine;
 import org.palczewski.diabpro.access.DiabproTableMachine;
 import org.palczewski.edit.DatabaseMachine;
@@ -52,10 +52,10 @@ public class Main {
         appwin.setVisible(true);
         */
 
-            // Attempt db connect
-            MainConnect mc = new MainConnect();
+            SQLConnect sconn = new SQLConnect();
 
-            conn = mc.doConnect(user, pw, dbName);
+            // SQL connection
+            conn = sconn.doConnect(user, pw);
             /*
             The new connection is passed to the other classes.
              */
@@ -65,11 +65,8 @@ public class Main {
             UserMachine um = new UserMachine(conn);
 
             // Create a table
-            dm.getNameVersion();
-            System.out.println();
-            dm.getDriverInfo();
-            System.out.println();
-            dm.getUserName();
+            dm.switchDatabase("mysql");
+            tm.viewRecords("user");
 
 
 
