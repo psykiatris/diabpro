@@ -17,7 +17,7 @@ import java.text.MessageFormat;
 This class extends dbutils.TableMachine, so that it may override the
 table creation and insertRecords methods
  */
-public class DiabproTableMachine extends TableMachine {
+public class LocalTableMachine extends TableMachine {
 
     // Variables
     Connection conn;
@@ -26,7 +26,7 @@ public class DiabproTableMachine extends TableMachine {
     String user;
     String dbName;
 
-    public DiabproTableMachine(Connection conn, String user,
+    public LocalTableMachine(Connection conn, String user,
                                String dbName) {
         super(conn);
         this.conn = conn;

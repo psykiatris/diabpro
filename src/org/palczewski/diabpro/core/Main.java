@@ -6,7 +6,7 @@ package org.palczewski.diabpro.core;
 
 import org.palczewski.connect.SQLConnect;
 import org.palczewski.core.UserMachine;
-import org.palczewski.diabpro.access.DiabproTableMachine;
+import org.palczewski.diabpro.access.LocalTableMachine;
 import org.palczewski.edit.DatabaseMachine;
 
 import java.nio.charset.StandardCharsets;
@@ -61,13 +61,10 @@ public class Main {
             The new connection is passed to the other classes.
              */
             DatabaseMachine dm = new DatabaseMachine(conn);
-            DiabproTableMachine tm = new DiabproTableMachine(conn, user,
+            LocalTableMachine tm = new LocalTableMachine(conn, user,
                     dbName);
             UserMachine um = new UserMachine(conn);
 
-            // Create a table
-            dm.switchDatabase("mysql");
-            tm.viewRecords("user");
 
 
 
