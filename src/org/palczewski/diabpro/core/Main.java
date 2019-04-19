@@ -55,7 +55,8 @@ public class Main {
             SQLConnect sconn = new SQLConnect();
 
             // SQL connection
-            conn = sconn.doConnect(user, pw);
+            conn = sconn.doConnect(user, pw, dbName);
+
             /*
             The new connection is passed to the other classes.
              */
@@ -73,16 +74,16 @@ public class Main {
             in.close(); // Close scanner
         } catch (Exception e) {
             System.out.println(MessageFormat.format("Exception in main(): {0}", e.getMessage()));
-        } finally {
+        }
             // Close connection
+
             try {
                 if(conn.isValid(120)) {
                     conn.close();
                 }
             } catch (SQLException e) {
-                System.out.println("Error closing SQL connection: " + e.getNextException());
+                System.out.println("Error closing SQL connection: " + e.getMessage());
             }
         }
 
-    }
 }
