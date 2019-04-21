@@ -9,7 +9,10 @@ import org.palczewski.core.UserMachine;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
-
+/*
+This class extends dbutils' UserMachine for customization, along with
+adding methods to validate user's credentials with the server.
+ */
 public class LocalUserMachine extends UserMachine {
 
     Connection conn;
@@ -22,10 +25,11 @@ public class LocalUserMachine extends UserMachine {
         super(conn);
         this.conn = conn;
         this.user = user;
+        // Run method to create user.
         createUser(user, pw);
     }
 
 
-    }
-
 }
+
+

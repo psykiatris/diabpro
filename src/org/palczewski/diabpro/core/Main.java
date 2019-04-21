@@ -65,6 +65,8 @@ public class Main {
                     dbName);
             UserMachine um = new UserMachine(conn);
 
+            tm.viewTables();
+
 
 
 
