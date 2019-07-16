@@ -52,6 +52,8 @@ public class Main {
         appwin.setVisible(true);
         */
 
+
+
             SQLConnect sconn = new SQLConnect();
 
             // SQL connection
@@ -66,6 +68,7 @@ public class Main {
             UserMachine um = new UserMachine(conn);
 
             tm.viewTables();
+            dm.viewDatabases();
 
 
 
