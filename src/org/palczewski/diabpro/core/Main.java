@@ -29,8 +29,8 @@ public class Main {
         // TODO: 4/4/19 Password field is exposed. FIX FIX
         //Get input
         // TODO: 4/13/19 Move log in out of main into its own function.
-        Scanner in = new Scanner(System.in, StandardCharsets.UTF_8);
-        try {
+
+        try (Scanner in = new Scanner(System.in, StandardCharsets.UTF_8)){
 
 
             System.out.println("\tWelcome to Diabetes Pro 1.0!\nThis system will allow you to input diary information along with stats on the things you eat.");
@@ -68,16 +68,16 @@ public class Main {
             UserMachine um = new UserMachine(conn);
 
             tm.viewTables();
-            dm.viewDatabases();
 
 
 
 
-            in.close(); // Close scanner
         } catch (Exception e) {
             System.out.println(MessageFormat.format("Exception in main(): {0}", e.getMessage()));
         }
-            // Close connection
+            /*
+            Not autocloseable. Must manually Close connection
+             */
 
             try {
                 if(conn.isValid(120)) {
