@@ -13,9 +13,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.MessageFormat;
 
-/*
-This class extends dbutils.TableMachine, so that it may override the
-table creation and insertRecords methods
+/**
+ * Extends dbutils.TableMachine, so that it may override the
+ * table creation and insertRecords methods
  */
 public class LocalTableMachine extends TableMachine {
 
@@ -26,6 +26,12 @@ public class LocalTableMachine extends TableMachine {
     String user;
     String dbName;
 
+    /**
+     * Creates LocalTableMachine object
+     * @param conn   Current connection
+     * @param user Current user
+     * @param dbName Database Name
+     */
     public LocalTableMachine(Connection conn, String user,
                                String dbName) {
         super(conn);
@@ -34,12 +40,12 @@ public class LocalTableMachine extends TableMachine {
         this.dbName = dbName;
     }
 
+    /**
+     * Creates 2 linked tables for each user, uniquely identified by the
+     * username: username.diary and username.nutrition
+     */
     public void createTable() {
-        /*
-        This method creates two tables with user's name, the diary and
-        nutrition tables.
 
-         */
         if(conn != null) {
             try {
                 stmt = conn.createStatement();
@@ -53,8 +59,7 @@ public class LocalTableMachine extends TableMachine {
                 stmt.executeUpdate(table2);
                 stmt.close();
             } catch (SQLException e) {
-                System.out.println("SQL error in DiabproTableMachine" +
-                        ".createTable(): " + e.getMessage());
+                System.out.printf("SQL error in DiabproTableMachine.createTable(): %s%n", e.getMessage());
             }
         } else {
             System.out.println(DatabaseMachine.NO_CONNECTION);
