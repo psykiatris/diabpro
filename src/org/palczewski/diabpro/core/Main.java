@@ -9,6 +9,7 @@ import org.palczewski.core.UserMachine;
 import org.palczewski.diabpro.access.LocalTableMachine;
 import org.palczewski.edit.DatabaseMachine;
 
+import java.io.Console;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -38,8 +39,16 @@ public class Main {
             System.out.println("\tPlease log in");
             System.out.print("Enter your username: ");
             user = in.nextLine();
-            System.out.print("Enter your password: ");
-            pw = in.nextLine();
+            Console cons;
+            char[] pwd;
+            if((((cons = System.console())) != null) && (((pwd =
+                    cons.readPassword("%s", "Password:"))) != null)) {
+                String pw = String.valueOf(pwd);
+
+                java.util.Arrays.fill(pwd, ' ');
+            } else {    // not in console
+                System.out.println("No password");
+            }
             System.out.println();
 
             // Run GUI form
@@ -51,8 +60,6 @@ public class Main {
         appwin.setTitle("Diabetes Pro v0.1");
         appwin.setVisible(true);
         */
-
-
 
             SQLConnect sconn = new SQLConnect();
 
