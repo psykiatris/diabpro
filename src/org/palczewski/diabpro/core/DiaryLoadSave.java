@@ -3,8 +3,9 @@
  */
 
 package org.palczewski.diabpro.core;
-/*
-Mechanism to load/save diary info.
+
+/**
+ * Loads/saves diary for user
  */
 public class DiaryLoadSave {
     

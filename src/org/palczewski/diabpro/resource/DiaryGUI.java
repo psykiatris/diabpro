@@ -15,9 +15,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.DateFormat;
 import java.text.MessageFormat;
-/*
-* Main window of the application.*/
 
+/**
+ * Provides main GUI window for this application
+ */
 public class DiaryGUI extends Frame {
 
     private final JTextArea editorArea;
@@ -30,6 +31,9 @@ public class DiaryGUI extends Frame {
     JTextField tfDate;
     String msg = "";
 
+    /**
+     * GUI window configuration
+     */
     public DiaryGUI() {
         // TODO: 10/16/18 Create menu bar to put on Frame.
         setLocationRelativeTo(null);
@@ -123,10 +127,17 @@ public class DiaryGUI extends Frame {
 
     }
 
+    /**
+     * Mouse events
+     */
     private class MyMouseAdapter extends MouseAdapter {
         MyMouseAdapter() {
         }
 
+        /**
+         * Triggers when mouse is clicked
+         * @param e Mouse click
+         */
         @Override
         public void mouseClicked(MouseEvent e) {
             // TODO: 10/16/18 Put code here to save data to diarymap.
@@ -136,10 +147,18 @@ public class DiaryGUI extends Frame {
     /*Really, there should be made static, however, the uiDesigner form
     complains that it cannot bind fields to the class. If I built the
     GUI manually, I can change to static.*/
+
+    /**
+     * Window events
+     */
     private class MyWindowAdapter extends WindowAdapter {
         MyWindowAdapter() {
         }
 
+        /**
+         * When window closes
+         * @param e Window event
+         */
         @Override
         public void windowClosing(WindowEvent e) {
             System.exit(0);

@@ -72,7 +72,7 @@ public class Main {
 
 
 
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             System.out.println(MessageFormat.format("Exception in main(): {0}", e.getMessage()));
         }
             /*
@@ -84,7 +84,7 @@ public class Main {
                     conn.close();
                 }
             } catch (SQLException e) {
-                System.out.println("Error closing SQL connection: " + e.getMessage());
+                System.out.printf("Error closing SQL connection: %s%n", e.getMessage());
             }
         }
 
