@@ -6,6 +6,7 @@ package org.palczewski.experimental;
 
 import java.io.Console;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class PassTheScanner {
@@ -19,11 +20,13 @@ public class PassTheScanner {
             Console cons;
             char[] pwd;
             if((((cons = System.console())) != null) && (((pwd =
-                    cons.readPassword("%s", "Password:"))) != null)) {
+                    cons.readPassword("%s", "Enter password:"))) != null)) {
+           // Run validity check
                 System.out.println("Voila!");
-                System.out.printf("Your pwd was %s%n", (Object) pwd);
+                String pass = Arrays.toString(pwd);
+                System.out.printf("Your password was %s%n", pass);
                 java.util.Arrays.fill(pwd, ' ');
-            } else {
+            } else {    // not in console
                 System.out.println("Bummer");
             }
         }
