@@ -18,16 +18,13 @@ import java.util.Scanner;
 
 public class Main {
 
-    static final String DIABPRO = "diabpro";
-    static Connection conn;
-    static String user;
-    static String pw;
-    static String dbName = "diabetes";
-    private final String rootUser = DIABPRO;
-    private final String rootPW = DIABPRO;
+    private static final String DIABPRO = "diabpro";
+    private static Connection conn = null;
+    private static final String rootUser = DIABPRO;
+    private static final String rootPW = DIABPRO;
 
     public static void main(String[] args) {
-        // TODO: 4/4/19 Password field is exposed. FIX FIX
+
         //Get input
         // TODO: 4/13/19 Move log in out of main into its own function.
 
@@ -38,9 +35,11 @@ public class Main {
             System.out.println();
             System.out.println("\tPlease log in");
             System.out.print("Enter your username: ");
-            user = in.nextLine();
+            String user = in.nextLine();
+            // Console will intercept input
             Console cons;
             char[] pwd;
+            String dbName = "diabetes";
             if((((cons = System.console())) != null) && (((pwd =
                     cons.readPassword("%s", "Password:"))) != null)) {
                 String pw = String.valueOf(pwd);
@@ -49,7 +48,9 @@ public class Main {
                 // SQL connection
                 conn = sconn.doConnect(user, pw, dbName);
 
-                java.util.Arrays.fill(pwd, ' ');
+                java.util.Arrays.fill(pwd, ' ');    // Encure password
+                // is not saved
+
             } else {    // not in console
                 System.out.println("No password");
             }
