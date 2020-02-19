@@ -44,6 +44,10 @@ public class Main {
             if((((cons = System.console())) != null) && (((pwd =
                     cons.readPassword("%s", "Password:"))) != null)) {
                 String pw = String.valueOf(pwd);
+                SQLConnect sconn = new SQLConnect();
+
+                // SQL connection
+                conn = sconn.doConnect(user, pw, dbName);
 
                 java.util.Arrays.fill(pwd, ' ');
             } else {    // not in console
@@ -61,10 +65,7 @@ public class Main {
         appwin.setVisible(true);
         */
 
-            SQLConnect sconn = new SQLConnect();
 
-            // SQL connection
-            conn = sconn.doConnect(user, pw, dbName);
 
             /*
             The new connection is passed to the other classes.
