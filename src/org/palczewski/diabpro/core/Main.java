@@ -28,8 +28,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        setConnecion();
+        System.out.print(welcome());;
 
+        setConnecion();
 
         /*
         Initialize objects with new SQL connection.
@@ -47,9 +48,13 @@ public class Main {
 
     }
 
+    private static String welcome() {
+        return "\tWelcome to Diabetes Pro 1.0!\nThis system will allow you to input diary information along with stats on the things you eat.\n";
+    }
+
     private static void closeSQLConn() {
         /*
-            Must manually close SQL connection
+            Manually close SQL connection
              */
         try {
             if (conn.isValid(120)) {
@@ -80,8 +85,7 @@ public class Main {
         try (Scanner in = new Scanner(System.in, StandardCharsets.UTF_8)) {
 
 
-            System.out.println("\tWelcome to Diabetes Pro 1.0!\nThis system will allow you to input diary information along with stats on the things you eat.");
-            System.out.println();
+
             System.out.println("\tPlease log in");
             System.out.print("Enter your username: ");
             String user = in.nextLine();
