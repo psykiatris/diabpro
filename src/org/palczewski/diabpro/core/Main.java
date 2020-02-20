@@ -7,28 +7,77 @@ package org.palczewski.diabpro.core;
 import org.palczewski.connect.SQLConnect;
 import org.palczewski.core.UserMachine;
 import org.palczewski.diabpro.access.LocalTableMachine;
+import org.palczewski.diabpro.resource.DiaryGUI;
 import org.palczewski.edit.DatabaseMachine;
 
+import java.awt.*;
 import java.io.Console;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.text.MessageFormat;
 import java.util.Scanner;
 
 public class Main {
 
     private static final String DIABPRO = "diabpro";
-    private static Connection conn = null;
+    private static final String user = null;
+    private static final String dbName = null;
     private static final String rootUser = DIABPRO;
     private static final String rootPW = DIABPRO;
+    private static Connection conn = null;
 
     public static void main(String[] args) {
 
-        //Get input
-        // TODO: 4/13/19 Move log in out of main into its own function.
+        setConnecion();
 
-        try (Scanner in = new Scanner(System.in, StandardCharsets.UTF_8)){
+
+        /*
+        Initialize objects with new SQL connection.
+         */
+        DatabaseMachine dm = getDM();
+        LocalTableMachine tm = getLTM();
+        UserMachine um = getUM();
+
+        tm.viewTables();
+
+        closeSQLConn();
+
+        System.out.println("Thank you for using Diabpro!");
+
+
+    }
+
+    private static void closeSQLConn() {
+        /*
+            Must manually close SQL connection
+             */
+        try {
+            if (conn.isValid(120)) {
+                conn.close();
+            }
+        } catch (
+                SQLException e) {
+            System.out.printf("Error closing SQL connection: %s%n", e.getMessage());
+        }
+    }
+
+    private static UserMachine getUM() {
+        return new UserMachine(conn);
+    }
+
+    private static LocalTableMachine getLTM() {
+        return new LocalTableMachine(conn, user,
+                dbName);
+    }
+
+    private static DatabaseMachine getDM() {
+
+        return new DatabaseMachine(conn);
+    }
+
+
+    private static Connection setConnecion() {
+        try (Scanner in = new Scanner(System.in, StandardCharsets.UTF_8)) {
 
 
             System.out.println("\tWelcome to Diabetes Pro 1.0!\nThis system will allow you to input diary information along with stats on the things you eat.");
@@ -40,7 +89,7 @@ public class Main {
             Console cons;
             char[] pwd;
             String dbName = "diabetes";
-            if((((cons = System.console())) != null) && (((pwd =
+            if ((((cons = System.console())) != null) && (((pwd =
                     cons.readPassword("%s", "Password:"))) != null)) {
                 String pw = String.valueOf(pwd);
                 SQLConnect sconn = new SQLConnect();
@@ -54,47 +103,20 @@ public class Main {
             } else {    // not in console
                 System.out.println("No password");
             }
-            System.out.println();
+        }
+        return conn;
+    }
 
-            // Run GUI form
-        /*
+    private void runGUI() {
+        // Run GUI form
+
         DiaryGUI appwin = new DiaryGUI();
 
 
         appwin.setSize(new Dimension(595, 425));
         appwin.setTitle("Diabetes Pro v0.1");
         appwin.setVisible(true);
-        */
 
 
-
-            /*
-            The new connection is passed to the other classes.
-             */
-            DatabaseMachine dm = new DatabaseMachine(conn);
-            LocalTableMachine tm = new LocalTableMachine(conn, user,
-                    dbName);
-            UserMachine um = new UserMachine(conn);
-
-            tm.viewTables();
-
-
-
-
-        } catch (RuntimeException e) {
-            System.out.println(MessageFormat.format("Exception in main(): {0}", e.getMessage()));
-        }
-            /*
-            Not autocloseable. Must manually Close connection
-             */
-
-            try {
-                if(conn.isValid(120)) {
-                    conn.close();
-                }
-            } catch (SQLException e) {
-                System.out.printf("Error closing SQL connection: %s%n", e.getMessage());
-            }
-        }
-
+    }
 }
