@@ -23,7 +23,7 @@ public class LocalTableMachine extends TableMachine {
     Connection conn;
     Statement stmt;
     PreparedStatement pstmt;
-    String user;
+    private String user;
     String dbName;
 
     /**
@@ -44,7 +44,7 @@ public class LocalTableMachine extends TableMachine {
      * Creates 2 linked tables for each user, uniquely identified by the
      * username: username.diary and username.nutrition
      */
-    public void createTable() {
+    public final void createTable() {
 
         if(conn != null) {
             try {

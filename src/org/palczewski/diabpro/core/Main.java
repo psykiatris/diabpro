@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class Main {
 
     private static final String DIABPRO = "diabpro";
-    private static final String user = null;
+    private static String user = null;
     private static final String dbName = null;
     private static final String rootUser = DIABPRO;
     private static final String rootPW = DIABPRO;
@@ -39,6 +39,8 @@ public class Main {
         LocalTableMachine tm = getLTM();
         UserMachine um = getUM();
 
+
+        tm.createTable();
         tm.viewTables();
 
         closeSQLConn();
@@ -48,14 +50,19 @@ public class Main {
 
     }
 
+    /**
+     * Generate welcome message
+     * @return Welcome message
+     */
     private static String welcome() {
         return "\tWelcome to Diabetes Pro 1.0!\nThis system will allow you to input diary information along with stats on the things you eat.\n";
     }
 
+    /**
+     * Manually closes SQL connection
+     */
     private static void closeSQLConn() {
-        /*
-            Manually close SQL connection
-             */
+
         try {
             if (conn.isValid(120)) {
                 conn.close();
@@ -66,21 +73,37 @@ public class Main {
         }
     }
 
+    /**
+     * Returns a UserMachine instance
+     * @return UserMachine
+     */
     private static UserMachine getUM() {
         return new UserMachine(conn);
     }
 
+    /**
+     * Returns a LocalTableMachine instance
+     * @return LocalTableMachine
+     */
     private static LocalTableMachine getLTM() {
         return new LocalTableMachine(conn, user,
                 dbName);
     }
 
+    /**
+     * Returns DatabaseMachine instance
+     * @return DatabaseMachine
+     */
     private static DatabaseMachine getDM() {
 
         return new DatabaseMachine(conn);
     }
 
-
+    /**
+     *
+     * Returns a connection instance
+     * @return Connection
+     */
     private static Connection setConnecion() {
         try (Scanner in = new Scanner(System.in, StandardCharsets.UTF_8)) {
 
@@ -108,9 +131,13 @@ public class Main {
                 System.out.println("No password");
             }
         }
+        user = user;
         return conn;
     }
 
+    /**
+     * Configures and runs GUI.
+     */
     private void runGUI() {
         // Run GUI form
 
