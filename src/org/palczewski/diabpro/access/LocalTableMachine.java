@@ -26,6 +26,7 @@ public class LocalTableMachine extends TableMachine {
     private String user;
     String dbName;
 
+
     /**
      * Creates LocalTableMachine object
      * @param conn   Current connection
@@ -44,6 +45,7 @@ public class LocalTableMachine extends TableMachine {
      * Creates 2 linked tables for each user, uniquely identified by the
      * username: username.diary and username.nutrition
      */
+    // TODO: 2/25/20 Need to set up a User object (containing name) so that it can be passed around.
     public final void createTable() {
 
         if(conn != null) {
